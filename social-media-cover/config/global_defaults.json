@@ -1,0 +1,50 @@
+{
+  "version": "v1.0.0-public",
+  "canonical_skill_folder": "social-media-cover",
+  "compatible_aliases": ["social-media-cover", "social_media_cover", "socail-media-cover", "socail_media_cover"],
+  "output_root": "./output/social-media-cover",
+  "default_template_id": "black_yellow_punch",
+  "palette_lock": {
+    "title_fill": "#FFD61E",
+    "subtitle_fill": "#FFFFFF",
+    "allow_auto_text_color_change": false
+  },
+  "fonts": {
+    "title_font_path": "assets/fonts/title-font.ttf",
+    "subtitle_font_path": "assets/fonts/title-font.ttf",
+    "allow_font_fallback": false
+  },
+  "channels": {
+    "douyin": {
+      "size": [1080, 1440],
+      "aspect": "3:4",
+      "title_safe_zone": {"x": 0, "y": 0, "width": 1080, "height": 420},
+      "title_safe_zone_quality": {
+        "max_mean_luma": 105,
+        "max_yellow_pixel_ratio": 0.08,
+        "max_edge_density": 0.17,
+        "max_border_edge_ratio": 0.34
+      }
+    },
+    "wechat": {
+      "size": [1260, 540],
+      "aspect": "21:9",
+      "title_safe_zone": {"x": 0, "y": 0, "width": 720, "height": 540},
+      "title_safe_zone_quality": {
+        "max_mean_luma": 95,
+        "max_yellow_pixel_ratio": 0.06,
+        "max_edge_density": 0.15,
+        "max_border_edge_ratio": 0.30
+      }
+    }
+  },
+  "hard_failures": {
+    "forbid_output_outside_root": true,
+    "forbid_template_drift": true,
+    "forbid_palette_drift": true,
+    "forbid_font_fallback": true,
+    "forbid_text_overflow": true,
+    "forbid_safe_zone_yellow_glow": true,
+    "forbid_large_title_frame": true
+  }
+}

@@ -1,0 +1,27 @@
+.DS_Store
+*~
+.~*
+.*.swp
+__pycache__/
+*.py[cod]
+
+# Generated outputs
+output/
+*/output/
+*_final.png
+*_final_pillow.png
+*_background.png
+*_trace*.json
+*_qa_report.json
+pipeline_report.json
+run_manifest.lock.json
+
+# Private local assets
+**/assets/avatar/reference-avatar.png
+**/assets/fonts/*.ttf
+**/assets/fonts/*.otf
+
+# Local environment
+.env
+.venv/
+node_modules/

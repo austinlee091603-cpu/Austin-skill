@@ -1,0 +1,30 @@
+{
+  "version": "v1.0.0",
+  "cases": [
+    {
+      "id": "douyin_yellow_title_glow_fails",
+      "platform": "douyin",
+      "description": "A bright yellow title-safe zone must fail before final delivery."
+    },
+    {
+      "id": "wechat_large_left_frame_fails",
+      "platform": "wechat",
+      "description": "A visible large frame around the WeChat title area must fail."
+    },
+    {
+      "id": "wechat_blue_palette_drift_fails",
+      "platform": "wechat",
+      "description": "WeChat must not drift to blue/white title colors when locked palette is yellow/white."
+    },
+    {
+      "id": "output_root_drift_fails",
+      "platform": "douyin",
+      "description": "Final outputs outside the locked output root must fail."
+    },
+    {
+      "id": "missing_visual_object_resolver_fails",
+      "platform": "douyin",
+      "description": "A sidecar without semantic task-object resolution must fail before delivery."
+    }
+  ]
+}

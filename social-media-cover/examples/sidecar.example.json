@@ -1,0 +1,44 @@
+{
+  "content_id": "cover_skill_opensource",
+  "platform": "douyin",
+  "template_id": "black_yellow_punch",
+  "main_title": "封面Skill",
+  "sub_title": "脚本一键出图",
+  "avatar": {
+    "reference_image": "assets/avatar/reference-avatar.png",
+    "locked_traits": {
+      "identity": "user locked avatar",
+      "hair_style": "preserve from reference",
+      "face_shape": "preserve from reference",
+      "rendering_style": "preserve from reference"
+    }
+  },
+  "visual_object_resolver": {
+    "semantic_frame": "open_source_workflow_release",
+    "task_object": "script-to-cover open-source workflow",
+    "primary_visual_object": "repository source-code workflow engine",
+    "visual_metaphor": "a repository gate unlocks a cover production pipeline",
+    "allowed_objects": ["repository gate", "source-code box", "workflow engine", "poster layout sheets"],
+    "forbidden_objects": ["phone", "tablet", "hardware product", "black glass slab"],
+    "misread_risks": ["workflow cards may look like mobile app screens if rendered as glossy black slabs"],
+    "prompt_object_rules": {
+      "must_include": ["repository", "source-code", "workflow engine"],
+      "must_exclude": ["phone", "tablet", "hardware product", "black glass slab"]
+    },
+    "semantic_qa": {
+      "first_read_should_be": "open-source cover skill workflow release",
+      "must_not_read_as": "mobile device product launch",
+      "manual_check_required": true
+    }
+  },
+  "image_prompt": {
+    "background_prompt": "repository source-code workflow engine, poster layout sheets, locked avatar interacting with the workflow engine, textless cover art, dark navy with gold accents",
+    "negative_prompt": "readable text, Chinese characters, phone, tablet, hardware product, black glass slab"
+  },
+  "constraints": {
+    "lock_text_layout": true,
+    "no_big_head": true,
+    "no_text_generated_by_model": true,
+    "semantic_object_lock": true
+  }
+}

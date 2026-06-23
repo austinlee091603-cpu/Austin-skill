@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Social Media Cover Sidecar",
+  "type": "object",
+  "required": [
+    "content_id",
+    "platform",
+    "topic",
+    "content_type",
+    "main_title",
+    "sub_title",
+    "template_id",
+    "scene_type",
+    "visual_object_resolver",
+    "avatar",
+    "image_prompt",
+    "constraints",
+    "trace"
+  ],
+  "properties": {
+    "content_id": { "type": "string" },
+    "platform": { "enum": ["douyin", "wechat"] },
+    "topic": { "type": "string" },
+    "content_type": { "type": "string" },
+    "audience": { "type": "string" },
+    "core_value": { "type": "string" },
+    "core_hook": { "type": "string" },
+    "main_title": { "type": "string", "maxLength": 10 },
+    "sub_title": { "type": "string", "maxLength": 16 },
+    "template_id": {
+      "enum": ["black_yellow_punch", "blue_black_tech", "white_clean_structure"]
+    },
+    "scene_type": { "type": "string" },
+    "visual_object_resolver": {
+      "type": "object",
+      "required": [
+        "semantic_frame",
+        "task_object",
+        "primary_visual_object",
+        "visual_metaphor",
+        "allowed_objects",
+        "forbidden_objects",
+        "misread_risks",
+        "prompt_object_rules",
+        "semantic_qa"
+      ],
+      "properties": {
+        "semantic_frame": { "type": "string" },
+        "task_object": { "type": "string" },
+        "primary_visual_object": { "type": "string" },
+        "visual_metaphor": { "type": "string" },
+        "allowed_objects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 2
+        },
+        "forbidden_objects": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "misread_risks": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "prompt_object_rules": {
+          "type": "object",
+          "required": ["must_include", "must_exclude"],
+          "properties": {
+            "must_include": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1
+            },
+            "must_exclude": {
+              "type": "array",
+              "items": { "type": "string" },
+              "minItems": 1
+            }
+          }
+        },
+        "semantic_qa": {
+          "type": "object",
+          "required": ["first_read_should_be", "must_not_read_as", "manual_check_required"],
+          "properties": {
+            "first_read_should_be": { "type": "string" },
+            "must_not_read_as": { "type": "string" },
+            "manual_check_required": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "avatar": {
+      "type": "object",
+      "required": ["character_id", "expression", "action", "outfit", "position", "scale_ratio"],
+      "properties": {
+        "character_id": { "type": "string" },
+        "expression": { "type": "string" },
+        "action": { "type": "string" },
+        "outfit": { "type": "string" },
+        "position": { "type": "string" },
+        "scale_ratio": { "type": "number", "minimum": 0.05, "maximum": 0.48 },
+        "reference_image": { "type": "string" },
+        "locked_traits": { "type": "string" },
+        "narrative_role": { "type": "string" },
+        "prior_action_avoidance": { "type": "string" }
+      }
+    },
+    "prop": { "type": "object" },
+    "visual_intent": { "type": "object" },
+    "image_prompt": {
+      "type": "object",
+      "required": ["background_prompt", "negative_prompt"],
+      "properties": {
+        "background_prompt": { "type": "string" },
+        "negative_prompt": { "type": "string" }
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "required": [
+        "main_title_max_chars",
+        "sub_title_max_chars",
+        "lock_text_layout",
+        "no_big_head",
+        "no_text_generated_by_model",
+        "semantic_object_lock"
+      ]
+    },
+    "trace": { "type": "object" }
+  },
+  "additionalProperties": true
+}

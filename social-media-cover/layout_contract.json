@@ -1,0 +1,157 @@
+{
+  "version": "v1.2.0",
+  "overflow_policy": "rewrite_text_not_resize",
+  "platforms": {
+    "douyin": {
+      "platform": "douyin",
+      "canvas": { "width": 1080, "height": 1440, "ratio": "3:4" },
+      "title_package": {
+        "style": "douyin_center_top_impact",
+        "title_mode": "account_explainer",
+        "x": 36,
+        "y": 56,
+        "width": 1008,
+        "height": 382,
+        "align": "center",
+        "backing": false,
+        "text_edge_policy": "no_stroke_no_shadow_single_pass; readability comes from image2 quiet title buffer, not heavy compositor effects",
+        "backing_color": "rgba(0,0,0,0.76)",
+        "backing_radius": 22,
+        "container_policy": "background_generated_soft_buffer_no_forced_frame",
+        "safe_zone_examples": ["soft_ui_glass", "sky_blank", "glow_field", "cockpit_window", "courtroom_light_box", "product_light_panel"],
+        "frame_rule": "do_not_force_visible_rectangular_frame; background must provide quiet low-contrast title buffer with 60-120px visual breathing room; if a scene-native panel exists, edges must be weak and not read as a pasted title box",
+        "soft_zone_cleanup": {
+          "enabled": false,
+          "style": "emergency_only_soft_readability_cleanup_not_default",
+          "x": 36,
+          "y": 56,
+          "width": 1008,
+          "height": 382,
+          "radius": 26,
+          "bottom_feather": 95,
+          "max_alpha": 188,
+          "border_alpha": 50
+        },
+        "title_group": {
+          "vertical_center_mode": "bbox_equal_margin",
+          "frame_top": 56,
+          "frame_bottom": 438,
+          "gap": 24
+        },
+        "highlight": true,
+        "highlight_color": "#FFD61E",
+        "char_variants": {
+          "2": { "title_font_size": 204, "subtitle_font_size": 90 },
+          "3": { "title_font_size": 196, "subtitle_font_size": 88 },
+          "4": { "title_font_size": 184, "subtitle_font_size": 84 },
+          "5": { "title_font_size": 170, "subtitle_font_size": 76 },
+          "6": { "title_font_size": 146, "subtitle_font_size": 76 },
+          "7": { "title_font_size": 128, "subtitle_font_size": 72 },
+          "8": { "title_font_size": 114, "subtitle_font_size": 68 }
+        }
+      },
+      "title": {
+        "text_key": "main_title",
+        "max_chars": 8,
+        "x": 60,
+        "y": 116,
+        "width": 960,
+        "height": 175,
+        "font_size": 176,
+        "font_weight": 900,
+        "line_height": 1,
+        "align": "center",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "subtitle": {
+        "text_key": "sub_title",
+        "max_chars": 12,
+        "x": 150,
+        "y": 292,
+        "width": 780,
+        "height": 92,
+        "font_size": 84,
+        "font_weight": 900,
+        "line_height": 1,
+        "align": "center",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "title_area": { "x": 0, "y": 0, "width": 1080, "height": 420 },
+      "avatar_safe_zone": {
+        "preferred_regions": ["lower_center", "bottom_right", "bottom_left", "mid_right"],
+        "forbidden_region": "title_area",
+        "max_area_ratio": 0.34,
+        "height_ratio_range": [0.30, 0.48],
+        "role": "emotional_actor_not_corner_sticker"
+      }
+    },
+    "wechat": {
+      "platform": "wechat",
+      "canvas": { "width": 1260, "height": 540, "ratio": "21:9" },
+      "title_package": {
+        "style": "wechat_left_mid_editorial",
+        "title_mode": "wechat_editorial_explainer",
+        "x": 0,
+        "y": 0,
+        "width": 720,
+        "height": 540,
+        "align": "left",
+        "backing": false,
+        "container_policy": "left_title_zone_with_content_derived_low_contrast_elements",
+        "left_context_rule": "do_not_leave_empty; image2 should generate subtle article-derived visual elements such as skill-tree nodes, workflow cards, light paths, data grids, cockpit/window glow, or metaphor props inside the left title side while preserving readability",
+        "left_context_source": "image2_background_not_compositor_overlay",
+        "title_group": {
+          "vertical_center_mode": "bbox_equal_margin",
+          "frame_top": 0,
+          "frame_bottom": 540,
+          "gap": 18
+        }
+      },
+      "title": {
+        "text_key": "main_title",
+        "max_chars": 10,
+        "x": 72,
+        "y": 0,
+        "width": 650,
+        "height": 90,
+        "font_size": 72,
+        "font_weight": 900,
+        "line_height": 1,
+        "align": "left",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "subtitle": {
+        "text_key": "sub_title",
+        "max_chars": 16,
+        "x": 78,
+        "y": 0,
+        "width": 650,
+        "height": 52,
+        "font_size": 38,
+        "font_weight": 800,
+        "line_height": 1,
+        "align": "left",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "title_area": { "x": 0, "y": 0, "width": 720, "height": 540 },
+      "avatar_safe_zone": {
+        "preferred_regions": ["right_side", "lower_right"],
+        "forbidden_region": "title_area",
+        "max_area_ratio": 0.24,
+        "height_ratio_range": [0.48, 0.62]
+      }
+    }
+  }
+}

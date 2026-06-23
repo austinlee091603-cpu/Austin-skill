@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Social Media Cover</title>
+    <style>
+      {{CSS}}
+    </style>
+  </head>
+  <body>
+    <main
+      class="cover"
+      style="
+        --canvas-width: {{CANVAS_WIDTH}}px;
+        --canvas-height: {{CANVAS_HEIGHT}}px;
+        --template-background: {{TEMPLATE_BACKGROUND}};
+        --title-color: {{TITLE_COLOR}};
+        --subtitle-color: {{SUBTITLE_COLOR}};
+        --stroke-color: {{STROKE_COLOR}};
+        --shadow-color: {{SHADOW_COLOR}};
+        --accent-color: {{ACCENT_COLOR}};
+      "
+      data-platform="{{PLATFORM}}"
+      data-template="{{TEMPLATE_ID}}"
+      data-title-backing="{{TITLE_BACKING}}"
+    >
+      <section class="background-layer" aria-hidden="true">
+        {{BACKGROUND_LAYER}}
+      </section>
+      <section class="title-package" aria-hidden="true">
+        <div class="title-package__glow"></div>
+      </section>
+      <h1
+        class="cover-title"
+        style="
+          left: {{TITLE_X}}px;
+          top: {{TITLE_Y}}px;
+          width: {{TITLE_WIDTH}}px;
+          height: {{TITLE_HEIGHT}}px;
+          font-size: {{TITLE_FONT_SIZE}}px;
+          font-weight: {{TITLE_FONT_WEIGHT}};
+          line-height: {{TITLE_LINE_HEIGHT}};
+          text-align: {{TITLE_ALIGN}};
+          -webkit-text-stroke-width: {{TITLE_STROKE_WIDTH}}px;
+        "
+      >{{MAIN_TITLE}}</h1>
+      <p
+        class="cover-subtitle"
+        style="
+          left: {{SUBTITLE_X}}px;
+          top: {{SUBTITLE_Y}}px;
+          width: {{SUBTITLE_WIDTH}}px;
+          height: {{SUBTITLE_HEIGHT}}px;
+          font-size: {{SUBTITLE_FONT_SIZE}}px;
+          font-weight: {{SUBTITLE_FONT_WEIGHT}};
+          line-height: {{SUBTITLE_LINE_HEIGHT}};
+          text-align: {{SUBTITLE_ALIGN}};
+          -webkit-text-stroke-width: {{SUBTITLE_STROKE_WIDTH}}px;
+        "
+      >{{SUB_TITLE}}</p>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "version": "v1.0.0",
+  "default_character_id": "user_avatar_black_hair_q_v1",
+  "default_reference_image": "assets/avatar/reference-avatar.png",
+  "role": "locked_avatar_identity_and_emotional_actor",
+  "immutable_traits": {
+    "identity": "the user's locked virtual personal avatar",
+    "face_shape": "soft rounded Q-version young male face; preserve from the default reference image or saved profile",
+    "hair_style": "black voluminous center-parted wavy short hair; preserve from the default reference image or saved profile",
+    "eye_and_brow_style": "large warm brown eyes, thick dark eyebrows, approachable expression baseline",
+    "outfit_baseline": "white knit sweater unless the topic strongly requires a costume variation",
+    "rendering_style": "high-quality 3D cartoon Q-version, clean premium editorial polish",
+    "temperament": "friendly, warm, approachable, smart creator-like"
+  },
+  "mutable_traits": {
+    "expression": ["confident_smile", "surprised", "focused", "serious_warning", "curious", "excited"],
+    "action": ["point_to_panel", "press_button", "hold_card", "compare_two_sides", "stop_warning", "unlock_box", "present_result"],
+    "outfit": ["tech_casual", "creator_black", "clean_white", "smart_jacket", "topic_costume"],
+    "props": ["floating_ui_panel", "workflow_card", "warning_sign", "key", "software_window", "data_board"]
+  },
+  "placement": {
+    "douyin_default": "bottom_right",
+    "wechat_default": "right_side",
+    "forbidden": "title_area",
+    "no_big_head": true
+  },
+  "reference_policy": {
+    "resolution_order": [
+      "explicit user-provided avatar path in the current request",
+      "default_reference_image if it exists on disk",
+      "most recent successful output/social-media-cover/*/*sidecar*.json with avatar.reference_image or avatar.locked_traits",
+      "most recent successful trace with trace.locked_avatar_source or generated_background_source that visibly preserves the locked avatar"
+    ],
+    "first_run": "before generating the first cover, ask user for a personal avatar reference image only if default_reference_image and prior sidecar/trace discovery both fail. Accept real photo, multi-view character sheet, 3D avatar, cartoon avatar, or illustration-style virtual persona.",
+    "multi_view_locking": "if user provides multi-view avatar references, summarize and save stable visual traits in sidecar trace for future reuse: face shape, hairstyle, eye shape, eyebrow shape, outfit baseline, rendering style, temperament.",
+    "repeat_runs": "reuse the locked avatar reference and traits when no new avatar image is provided; never ask again just because the current request omits the image.",
+    "update_rule": "only update the locked avatar identity when the user explicitly uploads a new reference image or asks to change the avatar."
+  },
+  "failure_policy": {
+    "if_unresolved": "stop and ask for an avatar reference before generating",
+    "forbidden_fallbacks": ["random person", "generic cartoon", "stick figure", "flat placeholder avatar", "manual cutout pasted into final"]
+  }
+}

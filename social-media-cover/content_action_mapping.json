@@ -1,0 +1,71 @@
+{
+  "version": "v1.0.0",
+  "mappings": {
+    "tutorial_demo": {
+      "actions": ["point_to_panel", "present_result"],
+      "expressions": ["confident_smile", "focused"],
+      "props": ["workflow_card", "software_window", "floating_ui_panel"],
+      "scenes": ["creator_studio", "screen_workbench"]
+    },
+    "efficiency_boost": {
+      "actions": ["press_button", "present_result"],
+      "expressions": ["surprised", "confident_smile"],
+      "props": ["automation_panel", "lightning_button", "gear_system"],
+      "scenes": ["automation_lab", "fast_workflow_space"]
+    },
+    "workflow_build_story": {
+      "actions": ["unlock_workflow_engine", "connect_pipeline_nodes", "present_finished_cover", "operate_generation_console"],
+      "expressions": ["surprised_confident", "focused_excited", "confident_smile"],
+      "props": ["workflow_engine", "script_pages", "image2_chamber", "typography_lock_layer", "flat_poster_layout_sheets", "layout_lock_stamp", "glowing_key"],
+      "scenes": ["creator_workflow_lab", "cover_generation_command_center", "script_to_cover_pipeline"]
+    },
+    "open_source_workflow_release": {
+      "actions": ["unlock_source_code_vault", "open_repository_gate", "present_source_code_box", "connect_script_to_cover_pipeline"],
+      "expressions": ["focused_excited", "surprised_confident", "confident_smile"],
+      "props": ["repository_gate", "source_code_vault", "source_code_box", "workflow_engine", "script_pages", "layout_lock_layer", "flat_poster_layout_sheets", "glowing_key"],
+      "scenes": ["open_source_workflow_lab", "repository_release_gate", "script_to_cover_pipeline"]
+    },
+    "tool_recommendation": {
+      "actions": ["hold_card", "point_to_panel"],
+      "expressions": ["confident_smile", "trustworthy"],
+      "props": ["app_icon_grid", "ranking_board", "recommendation_tag"],
+      "scenes": ["tool_showcase", "digital_shelf"]
+    },
+    "comparison_review": {
+      "actions": ["compare_two_sides", "point_to_panel"],
+      "expressions": ["focused", "thinking"],
+      "props": ["vs_panel", "split_screen", "data_board"],
+      "scenes": ["comparison_stage", "analysis_wall"]
+    },
+    "risk_warning": {
+      "actions": ["press_protection_button", "point_to_title_zone", "hold_warning_card", "guard_with_shield"],
+      "expressions": ["serious_but_reassuring", "alert", "incredulous", "firm_debunking"],
+      "props": ["legal_protection_button", "shield_pause_symbol", "frozen_debt_papers", "warning_sign", "court_light_beam"],
+      "scenes": ["legal_protection_stage", "courtroom_rescue_scene", "frozen_debt_storm", "dark_alert_room"]
+    },
+    "open_source_resource": {
+      "actions": ["unlock_box", "present_result"],
+      "expressions": ["excited", "curious"],
+      "props": ["key", "repository_panel", "open_box"],
+      "scenes": ["open_source_archive", "github_like_workspace"]
+    },
+    "open_source_industry_leverage": {
+      "actions": ["unlock_ai_model_vault", "release_capability_flywheel", "present_global_roadmap", "open_repository_gate"],
+      "expressions": ["surprised_confident", "alert_explainer", "excited_realization", "focused"],
+      "props": ["glowing_key", "ai_driving_model_vault", "repository_gate", "neural_road_map", "capability_flywheel"],
+      "scenes": ["autonomous_driving_arena", "global_smart_driving_racetrack", "open_source_model_vault", "ai_automotive_command_center"]
+    },
+    "opinion_commentary": {
+      "actions": ["hold_card", "point_to_panel"],
+      "expressions": ["thinking", "confident_smile"],
+      "props": ["quote_panel", "topic_card", "argument_board"],
+      "scenes": ["editorial_studio", "debate_wall"]
+    },
+    "counter_consensus_industry_commentary": {
+      "actions": ["pull_apart_old_new_split_screen", "operate_agent_node_cluster", "stand_at_forked_bridge", "hold_gap_scale"],
+      "expressions": ["alert_explainer", "serious_thinking", "urgent_realization", "incredulous"],
+      "props": ["agent_node_cluster", "old_new_industry_bridge", "compute_gap_scale", "ai_car_cockpit"],
+      "scenes": ["ai_automotive_command_center", "old_factory_vs_ai_future", "forked_industry_bridge"]
+    }
+  }
+}

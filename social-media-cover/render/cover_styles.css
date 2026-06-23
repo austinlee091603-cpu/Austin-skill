@@ -1,0 +1,102 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  overflow: hidden;
+  background: #111;
+}
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+}
+
+.cover {
+  position: relative;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  overflow: hidden;
+  background: var(--template-background);
+  isolation: isolate;
+}
+
+.background-layer,
+.background-image {
+  position: absolute;
+  inset: 0;
+}
+
+.background-layer {
+  z-index: 1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-title,
+.cover-subtitle {
+  position: absolute;
+  z-index: 5;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: 0;
+  font-style: normal;
+  font-kerning: normal;
+  text-rendering: geometricPrecision;
+  -webkit-text-stroke-color: var(--stroke-color);
+}
+
+.title-package {
+  position: absolute;
+  z-index: 4;
+  display: none;
+  left: 42px;
+  top: 54px;
+  width: 996px;
+  height: 342px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.78), rgba(0,0,0,0.38)),
+    linear-gradient(90deg, rgba(255,214,30,0.22), transparent 36%, rgba(255,214,30,0.16));
+  box-shadow: 0 28px 70px rgba(0,0,0,0.48);
+  opacity: 0.95;
+}
+
+.cover[data-title-backing="true"] .title-package {
+  display: block;
+}
+
+.cover[data-platform="wechat"] .cover-title,
+.cover[data-platform="wechat"] .cover-subtitle {
+  text-shadow: none;
+  -webkit-text-stroke-width: 0 !important;
+}
+
+.cover-title {
+  color: var(--title-color);
+  -webkit-text-fill-color: var(--title-color);
+  text-shadow: none;
+}
+
+.cover-subtitle {
+  color: var(--subtitle-color);
+  text-shadow: none;
+}
+
+.cover[data-platform="douyin"] .cover-subtitle {
+  display: block;
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
+}

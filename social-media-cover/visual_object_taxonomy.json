@@ -1,0 +1,205 @@
+{
+  "version": "v1.0.0",
+  "purpose": "Map script semantics to visual task objects, allowed metaphors, and misread guards before image generation.",
+  "frames": {
+    "open_source_workflow_release": {
+      "when_to_use": [
+        "the script announces a skill, repo, code, workflow, template, prompt system, or method being open-sourced or shared",
+        "the hook is release/open-source/unlock rather than a hardware product launch"
+      ],
+      "task_object": "the released code/workflow package and the reusable production system it unlocks",
+      "primary_visual_objects": [
+        "repository gate",
+        "source-code vault",
+        "source-code box",
+        "workflow engine",
+        "script-to-output pipeline",
+        "layout lock layer",
+        "poster layout sheets"
+      ],
+      "allowed_supporting_objects": [
+        "glowing key",
+        "unlocked archive box",
+        "node graph",
+        "script pages",
+        "code blocks as abstract texture",
+        "3:4 and 21:9 poster sheets",
+        "typography lock stamp"
+      ],
+      "forbidden_misread_objects": [
+        "phone",
+        "tablet",
+        "hardware product",
+        "app launch device",
+        "generic black glass slabs",
+        "product showcase cards",
+        "e-commerce product lineup"
+      ],
+      "prompt_guard": {
+        "must_include": ["repository", "source-code", "workflow engine"],
+        "must_exclude": ["phone", "tablet", "hardware product", "black glass slab"]
+      },
+      "misread_risk_note": "Rectangular cover thumbnails can look like devices. Render cover outputs as flat poster sheets, paper layouts, or wall-mounted thumbnails with visible margins, not handheld glossy screens."
+    },
+    "workflow_automation_system": {
+      "when_to_use": [
+        "the script explains turning repeated work into an automated or rule-based workflow",
+        "the value is process stability, speed, or repeatability"
+      ],
+      "task_object": "the automated workflow system that transforms input into output",
+      "primary_visual_objects": [
+        "pipeline",
+        "control console",
+        "node graph",
+        "automation engine",
+        "before-after production line"
+      ],
+      "allowed_supporting_objects": [
+        "input pages",
+        "gear system",
+        "progress nodes",
+        "locked output tray",
+        "quality checkpoint"
+      ],
+      "forbidden_misread_objects": [
+        "phone",
+        "tablet",
+        "generic app UI",
+        "hardware showroom",
+        "unrelated robot"
+      ],
+      "prompt_guard": {
+        "must_include": ["pipeline", "workflow", "quality checkpoint"],
+        "must_exclude": ["phone", "tablet", "hardware showroom"]
+      },
+      "misread_risk_note": "If output cards are needed, make them look like paper/poster/layout sheets, not electronic devices."
+    },
+    "method_framework_explainer": {
+      "when_to_use": [
+        "the script teaches a method, framework, checklist, or mental model",
+        "the hook is structured understanding rather than a released artifact"
+      ],
+      "task_object": "the method structure or decision framework",
+      "primary_visual_objects": [
+        "blueprint",
+        "layered framework board",
+        "checklist system",
+        "decision tree",
+        "stacked modules"
+      ],
+      "allowed_supporting_objects": [
+        "sticky notes without readable text",
+        "structured cards",
+        "diagram lines",
+        "magnifier",
+        "marker"
+      ],
+      "forbidden_misread_objects": [
+        "software product launch",
+        "hardware product",
+        "random dashboard",
+        "phone",
+        "tablet"
+      ],
+      "prompt_guard": {
+        "must_include": ["blueprint", "framework", "structured"],
+        "must_exclude": ["phone", "tablet", "hardware product"]
+      },
+      "misread_risk_note": "Avoid making the framework look like a specific app screen unless the script is about an app."
+    },
+    "product_or_tool_review": {
+      "when_to_use": [
+        "the script evaluates, compares, recommends, or tests a named product/tool/app/model",
+        "the object itself is the subject"
+      ],
+      "task_object": "the named product/tool being evaluated",
+      "primary_visual_objects": [
+        "comparison wall",
+        "test bench",
+        "ranking board without readable labels",
+        "split arena",
+        "score gauge"
+      ],
+      "allowed_supporting_objects": [
+        "magnifier",
+        "scale",
+        "two option panels",
+        "test cards",
+        "result lights"
+      ],
+      "forbidden_misread_objects": [
+        "unrelated product category",
+        "fake brand logo",
+        "phone",
+        "tablet"
+      ],
+      "prompt_guard": {
+        "must_include": ["comparison", "test", "result"],
+        "must_exclude": ["fake logo", "unrelated product"]
+      },
+      "misread_risk_note": "When the reviewed product is not hardware, do not visualize it as hardware."
+    },
+    "risk_warning_or_policy": {
+      "when_to_use": [
+        "the script warns about risk, compliance, legal, debt, safety, or operational failure",
+        "the core emotion is prevention or protection"
+      ],
+      "task_object": "the risk event and protection mechanism",
+      "primary_visual_objects": [
+        "shield",
+        "warning gate",
+        "frozen document storm",
+        "pause button",
+        "court light"
+      ],
+      "allowed_supporting_objects": [
+        "sealed files",
+        "red alert light",
+        "protective barrier",
+        "blocked path"
+      ],
+      "forbidden_misread_objects": [
+        "sales poster",
+        "happy product launch",
+        "phone",
+        "tablet"
+      ],
+      "prompt_guard": {
+        "must_include": ["shield", "warning", "protection"],
+        "must_exclude": ["product launch", "phone", "tablet"]
+      },
+      "misread_risk_note": "Risk covers should not look like product advertising."
+    },
+    "event_explainer": {
+      "when_to_use": [
+        "the script explains a news event, company move, industry change, or timeline",
+        "the hook is what happened and what it means"
+      ],
+      "task_object": "the event and its consequence chain",
+      "primary_visual_objects": [
+        "timeline gate",
+        "case file",
+        "map of consequences",
+        "forked road",
+        "event stage"
+      ],
+      "allowed_supporting_objects": [
+        "magnifier",
+        "document stack",
+        "map pins",
+        "signal beams"
+      ],
+      "forbidden_misread_objects": [
+        "random product ad",
+        "unrelated device",
+        "phone",
+        "tablet"
+      ],
+      "prompt_guard": {
+        "must_include": ["timeline", "case file", "consequence"],
+        "must_exclude": ["product ad", "phone", "tablet"]
+      },
+      "misread_risk_note": "Anchor the event visually; avoid generic tech decoration."
+    }
+  }
+}

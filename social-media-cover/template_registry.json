@@ -1,0 +1,38 @@
+{
+  "version": "v1.0.0",
+  "templates": {
+    "black_yellow_punch": {
+      "name": "Black Yellow Punch",
+      "title_color": "#FFD61E",
+      "subtitle_color": "#FFFFFF",
+      "stroke_color": "#080808",
+      "shadow_color": "rgba(0,0,0,0.72)",
+      "background_css": "linear-gradient(135deg,#111 0%,#242424 56%,#FFD61E 56%,#FFD61E 100%)",
+      "accent_color": "#FFD61E",
+      "mood": "Douyin high-impact thumbnail, black/yellow punch, oversized title, cinematic metaphor scene, expressive avatar actor, title-first readability",
+      "locked_title_system": true
+    },
+    "blue_black_tech": {
+      "name": "Blue Black Tech",
+      "title_color": "#F5FBFF",
+      "subtitle_color": "#6FE7FF",
+      "stroke_color": "#07121F",
+      "shadow_color": "rgba(0,16,32,0.72)",
+      "background_css": "linear-gradient(140deg,#06111E 0%,#102947 58%,#33C7FF 100%)",
+      "accent_color": "#33C7FF",
+      "mood": "futuristic, precise, efficient",
+      "locked_title_system": true
+    },
+    "white_clean_structure": {
+      "name": "White Clean Structure",
+      "title_color": "#111111",
+      "subtitle_color": "#2F5BFF",
+      "stroke_color": "#FFFFFF",
+      "shadow_color": "rgba(32,48,80,0.22)",
+      "background_css": "linear-gradient(135deg,#F7F8FA 0%,#FFFFFF 62%,#DDE7FF 100%)",
+      "accent_color": "#2F5BFF",
+      "mood": "clean, structured, premium",
+      "locked_title_system": true
+    }
+  }
+}
