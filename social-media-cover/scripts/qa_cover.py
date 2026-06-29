@@ -44,8 +44,9 @@ def image_pixels(image: Image.Image):
     return list(image.getdata())
 
 
-def safe_zone_metrics(background_path: Path, zone):
-    crop = crop_safe_zone(Image.open(background_path), zone)
+def safe_zone_metrics(background_path: Path, zone, quality=None):
+    full_image = Image.open(background_path).convert("RGB")
+    crop = crop_safe_zone(full_image, zone)
     pixels = image_pixels(crop)
     count = max(len(pixels), 1)
     mean_luma = sum(0.2126 * r + 0.7152 * g + 0.0722 * b for r, g, b in pixels) / count
@@ -60,10 +61,20 @@ def safe_zone_metrics(background_path: Path, zone):
     border = max(8, min(width, height) // 35)
     border_values = []
     center_values = []
+    quality = quality or {}
+    ignore_outer = bool(quality.get("ignore_canvas_outer_edges"))
+    zone_x, zone_y = zone["x"], zone["y"]
+    zone_right = zone["x"] + zone["width"]
+    zone_bottom = zone["y"] + zone["height"]
+    image_width, image_height = full_image.size
     for y in range(height):
         for x in range(width):
             value = edge_pixels[y * width + x]
-            if x < border or y < border or x >= width - border or y >= height - border:
+            is_left_border = x < border and not (ignore_outer and zone_x == 0)
+            is_top_border = y < border and not (ignore_outer and zone_y == 0)
+            is_right_border = x >= width - border and not (ignore_outer and zone_right >= image_width)
+            is_bottom_border = y >= height - border and not (ignore_outer and zone_bottom >= image_height)
+            if is_left_border or is_top_border or is_right_border or is_bottom_border:
                 border_values.append(value)
             else:
                 center_values.append(value)
@@ -80,6 +91,14 @@ def safe_zone_metrics(background_path: Path, zone):
         "edge_density": round(edge_density, 5),
         "border_edge_ratio": round(border_edge_ratio, 5)
     }
+
+
+def bbox_right(trace, key):
+    bbox = (trace.get("rendered_text") or {}).get(key) or {}
+    try:
+        return float(bbox["right"])
+    except (KeyError, TypeError, ValueError):
+        return None
 
 
 def _nonempty_string(value):
@@ -209,6 +228,16 @@ def main():
     failures.extend(resolver_failures)
     warnings.extend(resolver_warnings)
 
+    constraints = sidecar.get("constraints") or {}
+    if platform == "douyin_xhs_landscape":
+        for key in ["no_hard_crop", "independent_horizontal_composition", "center_top_title_system", "adversarial_review_complete"]:
+            if constraints.get(key) is not True:
+                failures.append(f"{platform}: constraints.{key} must be true")
+    if platform == "wechat":
+        for key in ["left_50_text_zone", "right_50_visual_zone", "soft_transition_band", "no_text_cross_50_percent_boundary"]:
+            if constraints.get(key) is not True:
+                failures.append(f"{platform}: constraints.{key} must be true")
+
     if channel:
         final_image = Image.open(final_path)
         expected_size = tuple(channel["size"])
@@ -221,7 +250,7 @@ def main():
         if text_len(sidecar.get("sub_title", "")) > max_sub:
             failures.append("subtitle overflow")
 
-        metrics = safe_zone_metrics(background_path, channel["title_safe_zone"])
+        metrics = safe_zone_metrics(background_path, channel["title_safe_zone"], channel.get("title_safe_zone_quality"))
         quality = channel["title_safe_zone_quality"]
         if metrics["mean_luma"] > quality["max_mean_luma"]:
             failures.append(f"title safe zone too bright: {metrics['mean_luma']} > {quality['max_mean_luma']}")
@@ -231,6 +260,17 @@ def main():
             failures.append(f"title safe zone too busy: {metrics['edge_density']} > {quality['max_edge_density']}")
         if metrics["border_edge_ratio"] > quality["max_border_edge_ratio"]:
             failures.append(f"title safe zone likely has large frame: {metrics['border_edge_ratio']} > {quality['max_border_edge_ratio']}")
+        if platform == "wechat":
+            split_x = expected_size[0] * 0.5
+            title_right = bbox_right(trace, "title_bbox")
+            subtitle_right = bbox_right(trace, "subtitle_bbox")
+            if title_right is None or subtitle_right is None:
+                failures.append("wechat: trace.rendered_text title/subtitle bbox is required")
+            else:
+                if title_right > split_x:
+                    failures.append(f"wechat title crosses 50% boundary: right={title_right} > {split_x}")
+                if subtitle_right > split_x:
+                    failures.append(f"wechat subtitle crosses 50% boundary: right={subtitle_right} > {split_x}")
     else:
         metrics = {}
 

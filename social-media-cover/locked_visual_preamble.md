@@ -2,7 +2,7 @@
 
 Version: `v1.2.0`
 
-This file is the visual constitution for Social Media Cover. It defines immutable cover rules. Models may read it, but they must not reinterpret or relax it.
+This file is the visual constitution for Socail Media Cover. It defines immutable cover rules. Models may read it, but they must not reinterpret or relax it.
 
 ## Canvas
 
@@ -31,7 +31,7 @@ This file is the visual constitution for Social Media Cover. It defines immutabl
 ## Avatar IP
 
 - Default to the user's fixed virtual personal avatar.
-- Default locked avatar reference: `assets/avatar/reference-avatar.png` when present, unless the user supplies a new reference or explicitly asks to change identity.
+- Default locked avatar reference: `./assets/avatar/reference-avatar.png` when present, unless the user supplies a new reference or explicitly asks to change identity.
 - The avatar is an emotional actor in the cover, not a pasted logo or corner sticker.
 - The avatar should participate in the content metaphor: pointing, holding, reacting, guarding, warning, presenting, comparing, or interacting with a prop.
 - Do not create random human replacements. Preserve the user's face shape, hair, rendering style, and temperament from the reference image.

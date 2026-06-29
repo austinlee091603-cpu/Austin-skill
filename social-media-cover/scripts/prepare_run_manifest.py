@@ -21,6 +21,20 @@ def write_json(path: Path, data):
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
+def resolve_skill_asset(raw_path):
+    path = Path(raw_path).expanduser()
+    if not path.is_absolute():
+        path = SKILL_DIR / path
+    return path.resolve()
+
+
+def normalize_config(config):
+    normalized = json.loads(json.dumps(config, ensure_ascii=False))
+    for key in ["title_font_path", "subtitle_font_path"]:
+        normalized["fonts"][key] = str(resolve_skill_asset(normalized["fonts"][key]))
+    return normalized
+
+
 def sha256_text(value: str):
     return hashlib.sha256(value.encode("utf-8")).hexdigest()
 
@@ -48,7 +62,7 @@ def main():
     parser.add_argument("--out", default=None, help="Optional exact manifest path")
     args = parser.parse_args()
 
-    config = read_json(CONFIG_PATH)
+    config = normalize_config(read_json(CONFIG_PATH))
     layout = read_json(LAYOUT_PATH)
     channels = [item.strip() for item in args.channels.split(",") if item.strip()]
     channel_titles = parse_channel_titles(args.channel_title)

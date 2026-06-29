@@ -33,12 +33,21 @@ Review the sidecar, layout contract, background, final PNG, and trace.
 14.6. For WeChat 21:9 covers, reject heavy black stroke or heavy black shadow. Default WeChat text should use no stroke/shadow because the background must be prepared for readability.
 14.7. For Douyin/Xiaohongshu covers, the title-safe zone should be background-generated breathing room, not a compositor-forced hard frame.
 14.8. For Douyin/Xiaohongshu covers, reject any default title/subtitle stroke, shadow, CSS text-shadow, synthetic offset redraw, or forced dark title backing. The layout contract should specify `stroke_width: 0` and `shadow: false` for both title fields.
+14.9. For Douyin/Xiaohongshu 4:3 landscape covers, reject any background or final cover that looks mechanically cropped from the 3:4 vertical cover, stretched from another platform, stitched from separate sections, split into obvious left/right panels, or laid out like a WeChat banner.
+14.10. For Douyin/Xiaohongshu 4:3 landscape covers, verify the title uses the same centered top title principle as the vertical cover. Reject default upper-left or left-title/right-visual layouts.
+14.11. For Douyin/Xiaohongshu 4:3 landscape covers, reject top title zones invaded by avatar face, bright nodes, gold props, clocks, radars, app bubbles, product objects, high-contrast workflow lines, or any strong object that competes with the title.
+14.12. For Douyin/Xiaohongshu 4:3 landscape covers, verify the avatar and primary metaphor live below the title zone and that the avatar participates in the script-specific action rather than becoming a corner sticker.
+14.13. For Douyin/Xiaohongshu 3:4 plus 4:3 bundled covers, verify the two outputs share identity, palette, typography, semantic object, and visual mother-theme, but do not use the exact same background crop or identical avatar action/expression.
+14.14. For Douyin/Xiaohongshu 4:3 landscape covers, verify the title wording follows `landscape_account_explainer`: main title <= 10 Chinese characters and subtitle <= 15 Chinese characters, retaining short-video impact rather than becoming a WeChat editorial headline.
+14.15. For WeChat covers, verify the title and subtitle rendered bounding boxes are fully inside the left 50% of the canvas. Reject text that crosses into the right visual half even if the character count passes.
+14.16. For WeChat covers, verify the right 50% contains the avatar, main content-derived visual object, and interaction action; the left 50% should contain only quiet low-detail context.
+14.17. For WeChat covers, reject visible vertical seams, hard cuts, blur walls, pasted split panels, strong objects crossing the 50% boundary into the title text, or high-contrast divider-like elements.
 15. Background has no obvious random readable Chinese text, English letters, numbers, labels, or typography-like glyphs.
 16. Final PNG size equals platform spec.
 17. Trace includes hashes, template id, platform, content id, output path, and QA results.
 18. Trace output path must point to the authoritative final PNG. If Pillow rendering is used, this should be `{platform}_final_pillow.png`.
 19. Final delivery uses no fallback path. If trace or sidecar says `mvp_heuristic_sidecar`, `allow_mvp_fallback`, `image2_background_used: false`, or no real background path/hash is present, reject.
-20. Final output path is under the configured `output_root/<run_id>/` from `run_manifest.lock.json`.
+20. Final output path is under `./output/social-media-cover/<run_id>/`.
 21. `template_id` matches `run_manifest.lock.json`; default locked template is `black_yellow_punch`.
 22. Trace text colors match the manifest/global defaults: main title `#FFD61E`, subtitle `#FFFFFF`. Reject blue/cyan or platform-specific color drift unless the user explicitly requested it.
 23. Trace font paths match the configured locked font paths. Reject silent fallback.
@@ -46,6 +55,8 @@ Review the sidecar, layout contract, background, final PNG, and trace.
 25. For Douyin/Xiaohongshu, reject yellow glow or warm bright haze in the top title-safe zone.
 26. For WeChat, reject a large glass panel, UI frame, title box, data panel, or visible rectangular container around the left title area.
 27. For open-source skill/workflow release scripts, reject glossy black rectangles, handheld slabs, product lineups, or floating device-like outputs unless the script is actually about devices. Cover outputs should read as flat poster sheets, paper layouts, wall thumbnails, or layout frames.
+28. For `douyin_xhs_landscape`, sidecar constraints should include `no_hard_crop: true`, `independent_horizontal_composition: true`, `center_top_title_system: true`, and `adversarial_review_complete: true`.
+29. For `wechat`, sidecar constraints should include `left_50_text_zone: true`, `right_50_visual_zone: true`, `soft_transition_band: true`, and `no_text_cross_50_percent_boundary: true`.
 
 ## Output
 

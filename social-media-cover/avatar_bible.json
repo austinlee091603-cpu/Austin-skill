@@ -1,16 +1,16 @@
 {
   "version": "v1.0.0",
-  "default_character_id": "user_avatar_black_hair_q_v1",
-  "default_reference_image": "assets/avatar/reference-avatar.png",
+  "default_character_id": "user_locked_avatar_v1",
+  "default_reference_image": "./assets/avatar/reference-avatar.png",
   "role": "locked_avatar_identity_and_emotional_actor",
   "immutable_traits": {
-    "identity": "the user's locked virtual personal avatar",
-    "face_shape": "soft rounded Q-version young male face; preserve from the default reference image or saved profile",
-    "hair_style": "black voluminous center-parted wavy short hair; preserve from the default reference image or saved profile",
-    "eye_and_brow_style": "large warm brown eyes, thick dark eyebrows, approachable expression baseline",
-    "outfit_baseline": "white knit sweater unless the topic strongly requires a costume variation",
-    "rendering_style": "high-quality 3D cartoon Q-version, clean premium editorial polish",
-    "temperament": "friendly, warm, approachable, smart creator-like"
+    "identity": "the user's locked personal avatar identity",
+    "face_shape": "derive from the user's reference image or saved profile and preserve across runs",
+    "hair_style": "derive from the user's reference image or saved profile and preserve across runs",
+    "eye_and_brow_style": "derive from the user's reference image or saved profile and preserve across runs",
+    "outfit_baseline": "derive from the user's reference image, but allow topic-relevant outfit changes when identity remains stable",
+    "rendering_style": "derive from the user's reference image or saved profile and preserve across runs",
+    "temperament": "derive from the user's creator persona and keep consistent across runs"
   },
   "mutable_traits": {
     "expression": ["confident_smile", "surprised", "focused", "serious_warning", "curious", "excited"],

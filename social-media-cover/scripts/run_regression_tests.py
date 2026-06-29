@@ -11,7 +11,6 @@ from PIL import Image, ImageDraw
 
 SKILL_DIR = Path(__file__).resolve().parents[1]
 QA_SCRIPT = SKILL_DIR / "scripts" / "qa_cover.py"
-TEST_FONT_PATH = str(SKILL_DIR / "assets" / "fonts" / "title-font.ttf")
 
 
 def write_json(path: Path, data):
@@ -32,8 +31,8 @@ def make_manifest(root: Path):
             "allow_auto_text_color_change": False
         },
         "fonts": {
-            "title_font_path": TEST_FONT_PATH,
-            "subtitle_font_path": TEST_FONT_PATH,
+            "title_font_path": "./assets/fonts/title-font.ttf",
+            "subtitle_font_path": "./assets/fonts/title-font.ttf",
             "allow_font_fallback": False
         },
         "channels": {
@@ -53,12 +52,13 @@ def make_manifest(root: Path):
                 "size": [1260, 540],
                 "title_bbox": {"max_chars": 10},
                 "subtitle_bbox": {"max_chars": 16},
-                "title_safe_zone": {"x": 0, "y": 0, "width": 720, "height": 540},
+                "title_safe_zone": {"x": 0, "y": 0, "width": 630, "height": 540},
                 "title_safe_zone_quality": {
                     "max_mean_luma": 95,
                     "max_yellow_pixel_ratio": 0.06,
                     "max_edge_density": 0.15,
-                    "max_border_edge_ratio": 0.30
+                    "max_border_edge_ratio": 0.30,
+                    "ignore_canvas_outer_edges": True
                 }
             }
         }
@@ -106,14 +106,25 @@ def base_files(root: Path, platform: str, palette=None, final_outside_root=False
             "semantic_object_lock": True
         }
     }
+    if platform == "wechat":
+        sidecar["constraints"].update({
+            "left_50_text_zone": True,
+            "right_50_visual_zone": True,
+            "soft_transition_band": True,
+            "no_text_cross_50_percent_boundary": True
+        })
     trace_palette = palette or {"title_fill": "#FFD61E", "subtitle_fill": "#FFFFFF"}
     trace = {
         "platform": platform,
         "template_id": "black_yellow_punch",
         "text_color": trace_palette,
         "font": {
-            "title_font_path": TEST_FONT_PATH,
-            "subtitle_font_path": TEST_FONT_PATH
+            "title_font_path": "./assets/fonts/title-font.ttf",
+            "subtitle_font_path": "./assets/fonts/title-font.ttf"
+        },
+        "rendered_text": {
+            "title_bbox": {"x": 72, "y": 205, "width": 420, "height": 70, "right": 492, "bottom": 275},
+            "subtitle_bbox": {"x": 78, "y": 292, "width": 360, "height": 40, "right": 438, "bottom": 332}
         }
     }
     sidecar_path = out / f"{platform}_sidecar.json"
@@ -164,10 +175,16 @@ def main():
         bg, final, sidecar, trace = base_files(root, "wechat")
         frame = Image.new("RGB", (1260, 540), (8, 14, 20))
         draw = ImageDraw.Draw(frame)
-        draw.rectangle((0, 0, 720, 539), outline=(120, 180, 230), width=10)
+        draw.rectangle((0, 0, 630, 539), outline=(120, 180, 230), width=10)
         frame.save(bg)
         frame.save(final)
         results.append(run_case("wechat_large_left_frame_fails", "wechat", manifest_path, bg, final, sidecar, trace))
+
+        bg, final, sidecar, trace = base_files(root, "wechat")
+        trace_data = json.loads(trace.read_text(encoding="utf-8"))
+        trace_data["rendered_text"]["title_bbox"]["right"] = 655
+        write_json(trace, trace_data)
+        results.append(run_case("wechat_text_cross_50_percent_boundary_fails", "wechat", manifest_path, bg, final, sidecar, trace))
 
         bg, final, sidecar, trace = base_files(root, "wechat", palette={"title_fill": "#F5FBFF", "subtitle_fill": "#6FE7FF"})
         results.append(run_case("wechat_blue_palette_drift_fails", "wechat", manifest_path, bg, final, sidecar, trace))

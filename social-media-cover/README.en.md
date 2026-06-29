@@ -29,7 +29,7 @@ You can also edit `config/global_defaults.json` and `avatar_bible.json` to point
 In Codex, use:
 
 ```text
-Use $social-media-cover to generate Douyin/Xiaohongshu 3:4 and WeChat 21:9 covers from this script.
+Use $social-media-cover to generate Douyin/Xiaohongshu covers and a WeChat 21:9 cover from this script.
 ```
 
 Or request a single channel:
@@ -40,7 +40,8 @@ Use $social-media-cover to generate a WeChat cover.
 
 ## Best For
 
-- Douyin/Xiaohongshu 3:4 covers.
+- Douyin/Xiaohongshu 3:4 vertical covers.
+- Douyin/Xiaohongshu 4:3 landscape covers, bundled with the 3:4 vertical cover by default.
 - WeChat official account 21:9 covers.
 - Creator accounts with a consistent avatar IP.
 - Cover title extraction from a full script or article.

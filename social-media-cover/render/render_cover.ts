@@ -12,7 +12,7 @@ const HTML_PATH = path.join(__dirname, "cover_template.html");
 const CSS_PATH = path.join(__dirname, "cover_styles.css");
 
 function usage() {
-  console.log(`Social Media Cover HTML preview renderer
+  console.log(`Socail Media Cover HTML preview renderer
 
 Usage:
   node render/render_cover.ts --sidecar sidecar.json --background background.png --platform douyin --out output/social-media-cover/<run_id>
@@ -100,15 +100,12 @@ function getPlaywright() {
   try {
     return require("playwright");
   } catch (error) {
-    const bundled = process.env.CODEX_NODE_MODULES;
-    if (bundled) {
-      try {
-        return require(path.join(bundled, "playwright"));
-      } catch (secondError) {
-        throw new Error(`Playwright is required for HTML preview rendering. CODEX_NODE_MODULES was set but unusable: ${secondError.message}`);
-      }
+    const bundled = process.env.CODEX_NODE_MODULES || "";
+    try {
+      return require(path.join(bundled, "playwright"));
+    } catch (secondError) {
+      throw new Error("Playwright is required for HTML preview rendering.");
     }
-    throw new Error("Playwright is required for HTML preview rendering. Install it locally or set CODEX_NODE_MODULES.");
   }
 }
 

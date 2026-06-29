@@ -29,7 +29,7 @@ cp -R social-media-cover ~/.codex/skills/social-media-cover
 在 Codex 对话中可以这样说：
 
 ```text
-使用 $social-media-cover，根据下面脚本输出抖音/小红书 3:4 封面和公众号 21:9 封面。
+使用 $social-media-cover，根据下面脚本输出抖音/小红书封面和公众号 21:9 封面。
 ```
 
 也可以只指定一个渠道：
@@ -40,7 +40,8 @@ cp -R social-media-cover ~/.codex/skills/social-media-cover
 
 ## 适合做什么
 
-- 抖音/小红书 3:4 封面。
+- 抖音/小红书 3:4 竖版封面。
+- 抖音/小红书 4:3 横版封面，默认和 3:4 竖版捆绑输出。
 - 公众号 21:9 横封面。
 - 有固定个人 IP 形象的账号封面。
 - 根据完整脚本或文章自动提炼主副标题。
@@ -56,7 +57,7 @@ cp -R social-media-cover ~/.codex/skills/social-media-cover
 ## 使用流程
 
 1. 给 Codex 一份完整脚本或文章。
-2. 指定输出渠道：`douyin`、`wechat` 或两个都要。
+2. 指定输出渠道：`douyin`、`douyin_xhs_landscape`、`wechat` 或组合输出。只说“抖音/小红书封面”时，默认同时输出 `douyin` 和 `douyin_xhs_landscape`。
 3. Codex 根据规则生成平台独立的 sidecar 和 image2 底图。
 4. 运行 `scripts/run_cover_pipeline.py` 生成最终图片并跑 QA。
 5. 检查 `pipeline_report.json` 中 `passed: true` 后交付。

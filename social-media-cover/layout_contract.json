@@ -91,6 +91,103 @@
         "role": "emotional_actor_not_corner_sticker"
       }
     },
+    "douyin_xhs_landscape": {
+      "platform": "douyin_xhs_landscape",
+      "canvas": { "width": 1440, "height": 1080, "ratio": "4:3" },
+      "title_package": {
+        "style": "douyin_xhs_landscape_center_top_impact",
+        "title_mode": "landscape_account_explainer",
+        "x": 72,
+        "y": 56,
+        "width": 1296,
+        "height": 382,
+        "align": "center",
+        "backing": false,
+        "text_edge_policy": "no_stroke_no_shadow_single_pass; readability comes from image2 quiet title buffer, not heavy compositor effects",
+        "container_policy": "background_generated_soft_buffer_no_forced_frame",
+        "safe_zone_examples": ["soft_ui_glass", "sky_blank", "glow_field", "studio_depth", "workflow_light_field", "product_light_panel"],
+        "frame_rule": "do_not_force_visible_rectangular_frame; background must provide a centered top quiet low-contrast title buffer with 60-120px visual breathing room; if a scene-native panel exists, edges must be weak and not read as a pasted title box",
+        "soft_zone_cleanup": {
+          "enabled": false,
+          "style": "emergency_only_soft_readability_cleanup_not_default",
+          "x": 72,
+          "y": 56,
+          "width": 1296,
+          "height": 382,
+          "radius": 26,
+          "bottom_feather": 95,
+          "max_alpha": 188,
+          "border_alpha": 50
+        },
+        "title_group": {
+          "vertical_center_mode": "bbox_equal_margin",
+          "frame_top": 56,
+          "frame_bottom": 438,
+          "gap": 24
+        },
+        "highlight": true,
+        "highlight_color": "#FFD61E",
+        "char_variants": {
+          "2": { "title_font_size": 204, "subtitle_font_size": 90 },
+          "3": { "title_font_size": 196, "subtitle_font_size": 88 },
+          "4": { "title_font_size": 184, "subtitle_font_size": 84 },
+          "5": { "title_font_size": 170, "subtitle_font_size": 80 },
+          "6": { "title_font_size": 146, "subtitle_font_size": 76 },
+          "7": { "title_font_size": 128, "subtitle_font_size": 72 },
+          "8": { "title_font_size": 114, "subtitle_font_size": 68 },
+          "9": { "title_font_size": 104, "subtitle_font_size": 64 },
+          "10": { "title_font_size": 96, "subtitle_font_size": 60 }
+        }
+      },
+      "title": {
+        "text_key": "main_title",
+        "max_chars": 10,
+        "x": 120,
+        "y": 116,
+        "width": 1200,
+        "height": 175,
+        "font_size": 146,
+        "font_weight": 900,
+        "line_height": 1,
+        "align": "center",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "subtitle": {
+        "text_key": "sub_title",
+        "max_chars": 15,
+        "x": 220,
+        "y": 292,
+        "width": 1000,
+        "height": 92,
+        "font_size": 72,
+        "font_weight": 900,
+        "line_height": 1,
+        "align": "center",
+        "stroke_width": 0,
+        "shadow": false,
+        "no_wrap": true,
+        "no_auto_scale": true
+      },
+      "title_area": { "x": 0, "y": 0, "width": 1440, "height": 420 },
+      "avatar_safe_zone": {
+        "preferred_regions": ["lower_center", "bottom_right", "bottom_left", "mid_right"],
+        "forbidden_region": "title_area",
+        "max_area_ratio": 0.30,
+        "height_ratio_range": [0.38, 0.58],
+        "role": "emotional_actor_not_corner_sticker"
+      },
+      "adversarial_review": {
+        "must_not_look_like_cropped_3_4": true,
+        "must_have_independent_horizontal_composition": true,
+        "must_have_center_top_title_system": true,
+        "strong_objects_start_after_y": 420,
+        "title_zone_requires_scene_native_breathing_room": true,
+        "forbid_visible_seam_or_collage": true
+      }
+    },
     "wechat": {
       "platform": "wechat",
       "canvas": { "width": 1260, "height": 540, "ratio": "21:9" },
@@ -99,12 +196,13 @@
         "title_mode": "wechat_editorial_explainer",
         "x": 0,
         "y": 0,
-        "width": 720,
+        "width": 630,
         "height": 540,
         "align": "left",
         "backing": false,
+        "split_rule": "canvas_x_50_percent_is_hard_boundary; title text must stay fully within x < 630; right-side visual action starts at x >= 630; x 567-693 is a soft transition band, not a hard seam",
         "container_policy": "left_title_zone_with_content_derived_low_contrast_elements",
-        "left_context_rule": "do_not_leave_empty; image2 should generate subtle article-derived visual elements such as skill-tree nodes, workflow cards, light paths, data grids, cockpit/window glow, or metaphor props inside the left title side while preserving readability",
+        "left_context_rule": "do_not_leave_empty; image2 should generate only subtle low-detail article-derived elements inside the left 50 percent while preserving readability; forbid strong objects, frames, document outlines, bright nodes, gold props, avatar face, or high-contrast separators in the left text zone",
         "left_context_source": "image2_background_not_compositor_overlay",
         "title_group": {
           "vertical_center_mode": "bbox_equal_margin",
@@ -118,7 +216,7 @@
         "max_chars": 10,
         "x": 72,
         "y": 0,
-        "width": 650,
+        "width": 520,
         "height": 90,
         "font_size": 72,
         "font_weight": 900,
@@ -134,7 +232,7 @@
         "max_chars": 16,
         "x": 78,
         "y": 0,
-        "width": 650,
+        "width": 520,
         "height": 52,
         "font_size": 38,
         "font_weight": 800,
@@ -145,7 +243,14 @@
         "no_wrap": true,
         "no_auto_scale": true
       },
-      "title_area": { "x": 0, "y": 0, "width": 720, "height": 540 },
+      "title_area": { "x": 0, "y": 0, "width": 630, "height": 540 },
+      "split_zones": {
+        "left_text_zone": { "x": 0, "y": 0, "width": 630, "height": 540 },
+        "right_visual_zone": { "x": 630, "y": 0, "width": 630, "height": 540 },
+        "transition_band": { "x": 567, "y": 0, "width": 126, "height": 540 },
+        "text_right_boundary": 630,
+        "strong_visuals_start_x": 630
+      },
       "avatar_safe_zone": {
         "preferred_regions": ["right_side", "lower_right"],
         "forbidden_region": "title_area",

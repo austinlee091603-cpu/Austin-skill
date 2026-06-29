@@ -28,7 +28,7 @@ Trace exists so covers can be reproduced, compared, audited, and A/B tested.
 ## Required QA Evidence
 
 - The final title and subtitle in trace must match sidecar text.
-- `font.title_font_path` and `font.subtitle_font_path` must record the actual font loaded by the renderer. Public installs should configure a real Chinese title font at `assets/fonts/title-font.ttf` or update `config/global_defaults.json` to another explicit font path.
+- `font.title_font_path` and `font.subtitle_font_path` must record the actual font loaded by the renderer. For the current locked Chinese style, prefer `./assets/fonts/title-font.ttf`.
 - `output.final_png` must point to the authoritative final file, not an old preview or chat thumbnail.
 - Background source should be preserved enough to audit image2 output versus compositor output.
 - Text colors in trace must match `run_manifest.lock.json` / `config/global_defaults.json`. The default locked values are title `#FFD61E` and subtitle `#FFFFFF`.

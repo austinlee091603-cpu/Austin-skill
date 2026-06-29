@@ -11,6 +11,14 @@ Use `account_explainer` by default for Douyin/Xiaohongshu covers.
 - Both are one line only.
 - Do not resize, wrap, condense, or move text to fit. Select a locked font-size variant from `layout_contract.json`; if still too long, rewrite.
 
+Use `landscape_account_explainer` by default for Douyin/Xiaohongshu 4:3 landscape covers.
+
+- Main title: `5-10` Chinese characters, hard max `10`.
+- Subtitle: `5-15` Chinese characters, hard max `15`.
+- Both are one line only.
+- The 4:3 canvas has about 25% more title capacity than 3:4, but it is still a short-video cover, not a WeChat editorial cover. Keep the same centered top title principle, punchy account voice, and similar large-font impact as the vertical cover.
+- Do not simply crop or reuse the vertical text placement. Generate a platform-specific title pair when the horizontal layout benefits from a slightly more complete viewing reason.
+
 Use `wechat_editorial_explainer` by default for WeChat 21:9 covers.
 
 - Main title: `6-10` Chinese characters, hard max `10`.
@@ -92,6 +100,8 @@ Classify each script before writing titles. Use the type to choose title grammar
 9. **Workflow/build story**
    - Douyin main: surprising outcome, tool/resource, or release event within 8 chars.
    - Douyin subtitle: how-I-built/process hook or open-source/use-case reason within 12 chars.
+- Douyin/Xiaohongshu landscape main: same hook grammar within 10 chars, rendered in the same centered top short-video title system as vertical.
+- Douyin/Xiaohongshu landscape subtitle: process/use-case reason within 15 chars, centered under the main title.
    - WeChat main: resource/method + release/outcome within 10 chars.
    - WeChat subtitle: workflow value, platform coverage, or creator benefit within 16 chars.
    - Example: `AI替我熬夜` / `我是如何搭建Agent的`
@@ -122,7 +132,7 @@ Always generate at least four title pairs:
 - `owner_or_user_angle`: user/community concern when applicable.
 - `industry_angle`: broader market or technology interpretation.
 
-When both Douyin/Xiaohongshu and WeChat are requested, generate and score separate candidate sets for each platform. The WeChat set must not be a mechanical truncation of the Douyin set.
+When both Douyin/Xiaohongshu ratios and WeChat are requested, generate and score separate candidate sets for each platform. The 4:3 landscape set may reuse the 3:4 wording only if it remains the strongest option; otherwise it should use the extra horizontal space for a slightly more complete hook while keeping the same centered top short-video hierarchy. The WeChat set must not be a mechanical truncation of the Douyin set.
 
 For each pair, record:
 
@@ -153,6 +163,8 @@ Reject if:
 - The wording is legally or factually stronger than the script supports.
 - WeChat title pair is unnecessarily short and leaves the 21:9 title zone feeling empty.
 - Douyin title pair is too editorial and loses first-glance impact.
+- Douyin/Xiaohongshu 4:3 landscape title pair wastes the extra horizontal title space without improving clarity, becomes so long that it loses short-video cover impact, or encourages a WeChat-like left-title/right-visual layout.
+- WeChat title pair fits character count but would exceed the left 50% rendered text boundary at the locked font size.
 
 ## Rewrite Order
 

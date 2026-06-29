@@ -12,7 +12,7 @@ The final delivery pipeline owns locked assets, final readable text, and QA. Use
 ## Output Location
 
 - Default output root is `./output/social-media-cover/`, as defined in `config/global_defaults.json`.
-- Each run should write into `./output/social-media-cover/<run_id>/` unless the user explicitly overrides the output root.
+- Each run should write into `./output/social-media-cover/<run_id>/`.
 - Keep `background.png`, `{platform}_final_pillow.png`, sidecar JSON, and trace JSON in the same run folder.
 - Avoid sibling folders named `social-media-cover_<topic>` directly under `output/`.
 - `scripts/run_cover_pipeline.py` creates `run_manifest.lock.json` before rendering. The renderer and QA must read this manifest; do not let later steps reselect template, palette, fonts, or output path.

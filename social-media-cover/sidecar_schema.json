@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Social Media Cover Sidecar",
+  "title": "Socail Media Cover Sidecar",
   "type": "object",
   "required": [
     "content_id",
@@ -19,7 +19,7 @@
   ],
   "properties": {
     "content_id": { "type": "string" },
-    "platform": { "enum": ["douyin", "wechat"] },
+    "platform": { "enum": ["douyin", "douyin_xhs_landscape", "wechat"] },
     "topic": { "type": "string" },
     "content_type": { "type": "string" },
     "audience": { "type": "string" },

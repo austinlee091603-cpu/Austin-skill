@@ -44,8 +44,6 @@ def text_len(text):
 
 def pick_font(size, font_path):
     path = Path(font_path).expanduser()
-    if not path.is_absolute():
-        path = (SKILL_DIR / path).resolve()
     if path.exists():
         font = ImageFont.truetype(str(path), size=size)
         return font, str(path), font.getname()
@@ -157,6 +155,18 @@ def draw_text_at(draw, position, text, font, fill, stroke_fill, stroke_width, sh
         draw.text((tx + ox, ty + oy), text, font=font, fill=fill, stroke_width=stroke_width, stroke_fill=stroke_fill)
 
 
+def rendered_bbox(draw, position, text, font, stroke_width):
+    bbox = draw.textbbox(position, text, font=font, stroke_width=stroke_width)
+    return {
+        "x": round(bbox[0], 2),
+        "y": round(bbox[1], 2),
+        "width": round(bbox[2] - bbox[0], 2),
+        "height": round(bbox[3] - bbox[1], 2),
+        "right": round(bbox[2], 2),
+        "bottom": round(bbox[3], 2),
+    }
+
+
 def draw_centered_text(draw, box, text, font, fill, stroke_fill, stroke_width, shadow=True, align="center"):
     tx, ty, _, _ = text_position(draw, box, text, font, stroke_width, align=align)
     draw_text_at(draw, (tx, ty), text, font, fill, stroke_fill, stroke_width, shadow=shadow)
@@ -241,6 +251,7 @@ def render(args):
     stroke = rgba(template["stroke_color"])
 
     title_group = package.get("title_group", {})
+    rendered_text = {}
     if title_group.get("vertical_center_mode") == "bbox_equal_margin":
         title_box = (title["x"], title["y"], title["width"], title["height"])
         subtitle_box = (subtitle["x"], subtitle["y"], subtitle["width"], subtitle["height"])
@@ -271,7 +282,27 @@ def render(args):
         )
         draw_text_at(draw, (title_tx, title_ty), sidecar["main_title"], title_font, title_fill, stroke, title["stroke_width"], shadow=title.get("shadow", True))
         draw_text_at(draw, (subtitle_tx, subtitle_ty), sidecar["sub_title"], subtitle_font, subtitle_fill, stroke, subtitle["stroke_width"], shadow=subtitle.get("shadow", True))
+        rendered_text = {
+            "title_bbox": rendered_bbox(draw, (title_tx, title_ty), sidecar["main_title"], title_font, title["stroke_width"]),
+            "subtitle_bbox": rendered_bbox(draw, (subtitle_tx, subtitle_ty), sidecar["sub_title"], subtitle_font, subtitle["stroke_width"]),
+        }
     else:
+        title_tx, title_ty, _, _ = text_position(
+            draw,
+            (title["x"], title["y"], title["width"], title["height"]),
+            sidecar["main_title"],
+            title_font,
+            title["stroke_width"],
+            align=title.get("align", "center"),
+        )
+        subtitle_tx, subtitle_ty, _, _ = text_position(
+            draw,
+            (subtitle["x"], subtitle["y"], subtitle["width"], subtitle["height"]),
+            sidecar["sub_title"],
+            subtitle_font,
+            subtitle["stroke_width"],
+            align=subtitle.get("align", "center"),
+        )
         draw_centered_text(
             draw,
             (title["x"], title["y"], title["width"], title["height"]),
@@ -294,6 +325,10 @@ def render(args):
             shadow=subtitle.get("shadow", True),
             align=subtitle.get("align", "center"),
         )
+        rendered_text = {
+            "title_bbox": rendered_bbox(draw, (title_tx, title_ty), sidecar["main_title"], title_font, title["stroke_width"]),
+            "subtitle_bbox": rendered_bbox(draw, (subtitle_tx, subtitle_ty), sidecar["sub_title"], subtitle_font, subtitle["stroke_width"]),
+        }
 
     result = Image.alpha_composite(image, overlay).convert("RGB")
     final_path = out_dir / f"{platform}_final_pillow.png"
@@ -330,6 +365,7 @@ def render(args):
             "sidecar_json": str(sidecar_out),
             "trace_json": str(trace_out),
         },
+        "rendered_text": rendered_text,
         "hashes": {
             "sidecar_sha256": hashlib.sha256(json.dumps(sidecar, ensure_ascii=False).encode("utf-8")).hexdigest(),
             "global_defaults_sha256": sha256_file(CONFIG_PATH),

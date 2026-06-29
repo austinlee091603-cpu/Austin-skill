@@ -92,6 +92,14 @@ def validate_sidecar(platform, sidecar, layout, config):
     for key in ["lock_text_layout", "no_big_head", "no_text_generated_by_model", "semantic_object_lock"]:
         if constraints.get(key) is not True:
             failures.append(f"{platform}: constraints.{key} must be true")
+    if platform == "douyin_xhs_landscape":
+        for key in ["no_hard_crop", "independent_horizontal_composition", "center_top_title_system", "adversarial_review_complete"]:
+            if constraints.get(key) is not True:
+                failures.append(f"{platform}: constraints.{key} must be true")
+    if platform == "wechat":
+        for key in ["left_50_text_zone", "right_50_visual_zone", "soft_transition_band", "no_text_cross_50_percent_boundary"]:
+            if constraints.get(key) is not True:
+                failures.append(f"{platform}: constraints.{key} must be true")
 
     avatar = sidecar.get("avatar") or {}
     avatar_ref = avatar.get("reference_image")
